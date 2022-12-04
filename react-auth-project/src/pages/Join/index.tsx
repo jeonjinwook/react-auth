@@ -7,23 +7,31 @@ import AuthInputBox from "../../components/AuthInputBox";
 import AuthButton from "../../components/AuthButton";
 import AuthButtonList from "../../components/AuthButtonList";
 
-const Main = () => {
+const Join = () => {
   return (
     <section>
-      <h1>HELLO</h1>
+      <h1>JOIN</h1>
       <AuthBox>
         <AuthInputBox
-          placeholder={"Email or username"}
-          errorMessage={"This email or username is not available."}
+          placeholder={"Email"}
+          errorMessage={"This email is not available."}
+        />
+        <AuthInputBox
+          placeholder={"username"}
+          errorMessage={"This username is not available."}
         />
         <AuthInputBox
           placeholder={"password"}
           errorMessage={"This password is not available."}
         />
-        <AuthButton title={`로그인`} />
+        <AuthInputBox
+          placeholder={"password check"}
+          errorMessage={"This password check is not available."}
+        />
+        <AuthButton title={`회원가입`} />
         <AuthButtonList>
           <li>
-            <Link to="/join">회원가입</Link>
+            <Link to="/">로그인 페이지로 돌아가기</Link>
           </li>
         </AuthButtonList>
       </AuthBox>
@@ -31,4 +39,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Join;
