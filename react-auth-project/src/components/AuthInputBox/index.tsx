@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const AuthInputDiv = styled.div`
@@ -34,11 +34,48 @@ const AuthInputDiv = styled.div`
   }
 `;
 
-const AuthInputBox = ({ placeholder, errorMessage, isHidden = true }) => {
+const AuthInputBox = ({
+  placeholder,
+  validationCheck = false,
+  errorMessage,
+  value = "",
+  setValue = () => {},
+  type = "text",
+  onBlur = () => {},
+  onChange = () => {},
+}) => {
+  const [isError, setIsError] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (value.length === 0) {
+      setIsError(false);
+    } else {
+      setIsError(!validationCheck);
+    }
+    console.log("validationCheck", validationCheck);
+  }, [validationCheck]);
+
+  const onChangeHandle = (e) => {
+    const targetValue = e.target.value;
+    console.log(targetValue);
+    setValue(targetValue);
+    if (targetValue.length === 0) {
+      setIsError(false);
+    } else {
+      setIsError(!validationCheck);
+    }
+    onChange();
+  };
+
   return (
     <AuthInputDiv>
-      <input placeholder={placeholder} />
-      <p className={`${isHidden ? "hidden" : null} `}>{errorMessage}</p>
+      <input
+        placeholder={placeholder}
+        onChange={onChangeHandle}
+        onBlur={onBlur}
+        type={type}
+      />
+      <p className={`${isError ? null : "hidden"} `}>{errorMessage}</p>
     </AuthInputDiv>
   );
 };
