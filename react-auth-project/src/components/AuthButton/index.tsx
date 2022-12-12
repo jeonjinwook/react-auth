@@ -11,10 +11,11 @@ const AuthBtn = styled.button`
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.4px;
+  cursor: pointer;
 `;
 
 const AuthButton = ({ title, onClick }) => {
-  return <AuthBtn>{title}</AuthBtn>;
+  return <AuthBtn onClick={onClick}>{title}</AuthBtn>;
 };
 
 export default AuthButton;

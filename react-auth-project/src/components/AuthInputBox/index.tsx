@@ -52,12 +52,10 @@ const AuthInputBox = ({
     } else {
       setIsError(!validationCheck);
     }
-    console.log("validationCheck", validationCheck);
   }, [validationCheck]);
 
   const onChangeHandle = (e) => {
     const targetValue = e.target.value;
-    console.log(targetValue);
     setValue(targetValue);
     if (targetValue.length === 0) {
       setIsError(false);
