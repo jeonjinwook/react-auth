@@ -47,7 +47,7 @@ const Join = () => {
     const hasUser = getUserByEmail(email);
 
     if (isEmailCheck) {
-      if (hasUser.length === 0) {
+      if (!hasUser) {
         setIsEmailCheck(true);
       } else {
         setIsEmailCheck(false);
@@ -60,7 +60,7 @@ const Join = () => {
   const duplicateUsernameCheck = () => {
     const hasUser = getUserByUsername(username);
 
-    if (hasUser.length === 0) {
+    if (!hasUser) {
       setIsUsernameCheck(true);
     } else {
       setIsUsernameCheck(false);
@@ -78,7 +78,7 @@ const Join = () => {
 
       if (status === "success") {
         alert("회원가입 성공");
-        navigate("/");
+        navigate("/login");
       } else {
         alert("회원가입에 실패하셨습니다.");
       }
@@ -126,7 +126,7 @@ const Join = () => {
         <AuthButton title={`회원가입`} onClick={joinUserBtn} />
         <AuthButtonList>
           <li>
-            <Link to="/">로그인 페이지로 돌아가기</Link>
+            <Link to="/login">로그인 페이지로 돌아가기</Link>
           </li>
         </AuthButtonList>
       </AuthBox>

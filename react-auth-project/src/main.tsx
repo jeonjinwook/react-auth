@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
 import Main from "./pages/Main";
 import Join from "./pages/Join";
+import Login from "./pages/Login";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "join",
     element: <Join />,
+  },
+  {
+    path: "login",
+    element: <Login />,
   },
 ]);
 
