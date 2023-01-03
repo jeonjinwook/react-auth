@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 
 import AuthBox from "../../components/AuthBox";
@@ -10,13 +9,13 @@ import AuthButtonList from "../../components/AuthButtonList";
 import { login } from "../../__users/api";
 
 const Login = () => {
-  const [userId, setUserId] = useState<string>("");
+  const [email, setUserId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const navigate = useNavigate();
 
   const userLoginBtn = () => {
-    const { status, message = "" } = login({ userId, password });
+    const { status, message = "" } = login({ email, password });
     if (status === "success") {
       localStorage.setItem("isLogin", "true");
       alert("Login Success!");
@@ -39,7 +38,7 @@ const Login = () => {
       <h1>LOGIN PAGE</h1>
       <AuthBox>
         <AuthInputBox
-          value={userId}
+          value={email}
           setValue={setUserId}
           placeholder={"Email or username"}
           // errorMessage={"This email or username is not available."}

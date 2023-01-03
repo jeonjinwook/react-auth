@@ -1,29 +1,9 @@
 import { users } from "../index";
 
-export const getUserByUsername = (username) => {
-  return users.filter((data) => data.username === username)[0] || null;
-};
-
-export const getUserByEmail = (email) => {
-  return users.filter((data) => data.email === email)[0] || null;
-};
-
-export const joinUser = (userData) => {
+export const login = async (userData: { email: any; password: any }) => {
   try {
-    users.push({
-      id: users.reduce((maxId, user) => Math.max(user.id, maxId), -1) + 1,
-      ...userData,
-    });
-
-    return { status: "success" };
-  } catch (error) {
-    return { status: "fail", message: "Get Error" };
-  }
-};
-
-export const login = (userData) => {
-  try {
-    const user = getUserByEmailOrUsername(userData.userId);
+    const user = await getUserByEmailOrUsername(userData);
+    console.log(user);
     if (!user) {
       return { status: "fail", message: "User Not Found" };
     } else {
@@ -38,8 +18,22 @@ export const login = (userData) => {
   }
 };
 
-const getUserByEmailOrUsername = (userId) => {
-  return users.filter(
-    (data) => data.email === userId || data.username === userId
-  )[0];
+const getUserByEmailOrUsername = async (userData: {
+  email: any;
+  password: any;
+}) => {
+  const response = await fetch("http://localhost:8080/login", {
+    method: "POST", // *GET, POST, PUT, DELETE 등
+    mode: "no-cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: "follow", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(userData), // body의 데이터 유형은 반드시 "Content-Type" 헤더와 일치해야 함
+  });
+  return response.json();
 };
