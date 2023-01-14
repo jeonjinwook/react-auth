@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
 const AuthInputDiv = styled.div`
@@ -34,6 +34,17 @@ const AuthInputDiv = styled.div`
   }
 `;
 
+interface AuthInputBoxProps {
+  placeholder?: string;
+  validationCheck?: boolean;
+  errorMessage?: string;
+  value?: string;
+  setValue?: Dispatch<SetStateAction<string>>;
+  type?: string;
+  onBlur?: () => void;
+  onChange?: () => void;
+}
+
 const AuthInputBox = ({
   placeholder,
   validationCheck = false,
@@ -43,7 +54,7 @@ const AuthInputBox = ({
   type = "text",
   onBlur = () => {},
   onChange = () => {},
-}) => {
+}: AuthInputBoxProps) => {
   const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
@@ -54,7 +65,7 @@ const AuthInputBox = ({
     }
   }, [validationCheck]);
 
-  const onChangeHandle = (e) => {
+  const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const targetValue = e.target.value;
     setValue(targetValue);
     if (targetValue.length === 0) {

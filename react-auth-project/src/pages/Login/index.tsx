@@ -9,13 +9,13 @@ import AuthButtonList from "../../components/AuthButtonList";
 import { login } from "../../__users/api";
 
 const Login = () => {
-  const [email, setUserId] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const navigate = useNavigate();
 
-  const userLoginBtn = () => {
-    const { status, message = "" } = login({ email, password });
+  const userLoginBtn = async () => {
+    const { status, message = "" } = await login({ email, password });
     if (status === "success") {
       localStorage.setItem("isLogin", "true");
       alert("Login Success!");
@@ -39,7 +39,7 @@ const Login = () => {
       <AuthBox>
         <AuthInputBox
           value={email}
-          setValue={setUserId}
+          setValue={setEmail}
           placeholder={"Email or username"}
           // errorMessage={"This email or username is not available."}
         />
