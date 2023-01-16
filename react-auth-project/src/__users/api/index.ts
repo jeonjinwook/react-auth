@@ -18,13 +18,26 @@ export const login = async (userData: { email: any; password: any }) => {
   }
 };
 
+export const joinUser = async (userData: {email: any; name:any; password:any}) => {
+  const response = await fetch("http://localhost:8080/api/users/sign-up", {
+    method: "POST", // *GET, POST, PUT, DELETE 등
+    mode: "cors", // no-cors, *cors, same-origin
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(userData), // body의 데이터 유형은 반드시 "Content-Type" 헤더와 일치해야 함
+  });
+  return response.json();
+};
+
 const getUserByEmailOrUsername = async (userData: {
   email: any;
   password: any;
 }) => {
   const response = await fetch("http://localhost:8080/login", {
     method: "POST", // *GET, POST, PUT, DELETE 등
-    mode: "no-cors", // no-cors, *cors, same-origin
+    mode: "cors", // no-cors, *cors, same-origin
     body: JSON.stringify(userData), // body의 데이터 유형은 반드시 "Content-Type" 헤더와 일치해야 함
   });
   return response.json();

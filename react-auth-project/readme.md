@@ -12,3 +12,9 @@
   - 이 또한 typescript가 type에 민감해서 생긴 문제
   - styled-components와 연관된 모듈에 대한 선언 파일을 못 찾아서 생긴 오류
     > https://garniel23.tistory.com/m/entry/%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0-styled-components-Could-not-find-declaration-file
+
+
+
+- request cors에러
+  - 서버에서 cors관련 필터를 적용시켜서 Content type 'text/plain;charset=UTF-8' not supported 발생
+  - 요청 mods : no-cors -> cors로 변경
