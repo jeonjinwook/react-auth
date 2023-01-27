@@ -15,10 +15,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   const userLoginBtn = async () => {
-    const { status, message = "" } = await login({ email, password });
-    if (status === "success") {
+    const { result, message } = await login({ email, password });
+    if (result === "success") {
       localStorage.setItem("isLogin", "true");
-      alert("Login Success!");
+      alert(message);
       navigate("/");
     } else {
       alert(message);

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import AuthBox from "../../components/AuthBox";
@@ -43,38 +42,9 @@ const Join = () => {
     setIsPasswordCheck(password.length > 5);
   }, [secondPassword]);
 
-//   const duplicateEmailCheck = () => {
-//     const hasUser = getUserByEmail(email);
-
-//     if (isEmailCheck) {
-//       if (!hasUser) {
-//         setIsEmailCheck(true);
-//       } else {
-//         setIsEmailCheck(false);
-//       }
-//     } else {
-//       setIsEmailCheck(false);
-//     }
-//   };
-
-//   const duplicateUsernameCheck = () => {
-//     const hasUser = getUserByUsername(username);
-
-//     if (!hasUser) {
-//       setIsUsernameCheck(true);
-//     } else {
-//       setIsUsernameCheck(false);
-//     }
-//   };
-
   const joinUserBtn = async () => {
-    if (
-      isEmailCheck &&
-    //   isUsernameCheck &&
-      isPasswordCheck &&
-      isSecondPasswordCheck
-    ) {
-      const { result, massage } = await joinUser({ email,name, password });
+    if (isEmailCheck && isPasswordCheck && isSecondPasswordCheck) {
+      const { result, massage } = await joinUser({ email, name, password });
 
       if (result === "success") {
         alert(massage);
@@ -95,7 +65,6 @@ const Join = () => {
           value={email}
           setValue={setEmail}
           validationCheck={isEmailCheck}
-        //   onBlur={duplicateEmailCheck}
           placeholder={"Email"}
           errorMessage={"This email is not available."}
         />
@@ -103,7 +72,6 @@ const Join = () => {
           value={name}
           setValue={setName}
           validationCheck={isUsernameCheck}
-        //   onBlur={duplicateUsernameCheck}
           placeholder={"username"}
           errorMessage={"This username is not available."}
         />
