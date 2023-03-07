@@ -22,7 +22,7 @@ interface ToDoListProps {
 
 function ToDoList({ todoLists, setTodoLists }: ToDoListProps) {
   const setToDoListFilterValue = async (e: any) => {
-    const { data } = await axios("http://localhost:8080/api/todo/getTodoList", {
+    const { data } = await axios("http://localhost:8081/api/todo/getTodoList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

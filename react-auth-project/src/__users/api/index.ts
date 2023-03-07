@@ -14,7 +14,7 @@ export const joinUser = async (userData: {
   name: any;
   password: any;
 }) => {
-  const response = await axios("http://localhost:8080/api/users/sign-up", {
+  const response = await axios("http://localhost:8081/api/users/sign-up", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +28,7 @@ const getUserByEmailOrUsername = async (userData: {
   email: any;
   password: any;
 }) => {
-  const response = await axios("http://localhost:8080/api/users/login", {
+  const response = await axios("http://localhost:8081/api/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

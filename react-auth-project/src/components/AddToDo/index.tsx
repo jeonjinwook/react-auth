@@ -47,7 +47,7 @@ function AddToDoComponent({ todoLists, setTodoLists }: AddToDoComponentProps) {
       date: moment(date).format("yyyyMMDD"),
       status: "todo",
     };
-    const { data } = await axios("http://localhost:8080/api/todo/insertTodo", {
+    const { data } = await axios("http://localhost:8081/api/todo/insertTodo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

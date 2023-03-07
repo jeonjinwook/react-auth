@@ -30,7 +30,7 @@ const Main = () => {
   const [todoLists, setTodoLists] = useState<TodoInterface[]>([]);
 
   const userLogoutBtn = async () => {
-    const response = await axios("http://localhost:8080/api/users/logout", {
+    const response = await axios("http://localhost:8081/api/users/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const Main = () => {
   };
 
   const userDelete = async () => {
-    const response = await axios("http://localhost:8080/api/users/deleteUser", {
+    const response = await axios("http://localhost:8081/api/users/deleteUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const Main = () => {
     }
     const getTodoListData = async () => {
       const { data } = await axios(
-        "http://localhost:8080/api/todo/getTodoList",
+        "http://localhost:8081/api/todo/getTodoList",
         {
           method: "POST",
           headers: {

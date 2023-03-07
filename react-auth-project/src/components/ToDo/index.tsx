@@ -33,7 +33,7 @@ function ToDo(todoData: TodoInterface) {
 
   const toggleCompletedToDo = async (value: string) => {
     const newStatusTodo = { ...todoForm, status: value };
-    await axios("http://localhost:8080/api/todo/updateTodo", {
+    await axios("http://localhost:8081/api/todo/updateTodo", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ function ToDo(todoData: TodoInterface) {
   };
 
   const deleteToDo = async () => {
-    await axios("http://localhost:8080/api/todo/deleteTodo", {
+    await axios("http://localhost:8081/api/todo/deleteTodo", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
